@@ -83,7 +83,7 @@ Producér struktureret JSON (se "Verdict-format" nedenfor), gem til disk, og rap
 
 ## Verdict-format
 
-Output er ALTID JSON først. Skriv til stdout og gem også som fil i `~/.codewire/security-audits/<YYYY-MM-DD>/<artefakt-slug>.json`.
+Output er ALTID JSON først. Skriv til stdout og gem også som fil i `~/.<name>/security-audits/<YYYY-MM-DD>/<artefakt-slug>.json`.
 
 ```json
 {
@@ -188,7 +188,7 @@ Efter JSON er gemt, vis i chat:
 ✓ Verified maintainer (stevemao)
 
 Anbefaling: pin version med `1.3.0` i stedet for `^1.3.0`
-Fuld rapport: ~/.codewire/security-audits/2026-05-10/left-pad.json
+Fuld rapport: ~/.<name>/security-audits/2026-05-10/left-pad.json
 ```
 
 For `WARN`:
@@ -225,7 +225,7 @@ Append til sessionens handoff-document:
 
 ## Hvidliste
 
-Pakker på `~/.codewire/security-audit/whitelist.json` springer fuldt tjek over og kører kun en hurtig CVE-søgning. Filen redigeres KUN manuelt af brugeren — Claude må ikke tilføje til den. Format:
+Pakker på `~/.<name>/security-audit/whitelist.json` springer fuldt tjek over og kører kun en hurtig CVE-søgning. Filen redigeres KUN manuelt af brugeren — Claude må ikke tilføje til den. Format:
 
 ```json
 {

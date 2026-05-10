@@ -42,6 +42,44 @@ pwsh ./install.ps1
 
 This copies the skill into `~/.claude/skills/security-audit/`. Restart Claude Code afterwards.
 
+## Pick your storage folder (`<name>` placeholder)
+
+Throughout this README — and inside `skills/security-audit/SKILL.md` — you'll see paths
+like `~/.<name>/security-audit/whitelist.json` and `~/.<name>/security-audits/...`.
+
+`<name>` is a placeholder for the folder where the skill stores its **whitelist** and its
+**JSON audit reports**. Pick a name that fits your brand or org and use it consistently.
+Examples: `.codewire`, `.acme`, `.mycompany`, or just `.claude` if you have no preference.
+
+**This step is required.** Both `README.md` and `skills/security-audit/SKILL.md` reference
+the path with the literal string `<name>`. If you install without substituting, the skill
+will create real folders called `~/.<name>/...` on disk — ugly but harmless. To avoid that,
+do a one-time find-and-replace **after cloning, before running the installer**:
+
+### Windows (PowerShell)
+
+```powershell
+$folder = "codewire"   # ← your choice, no leading dot
+Get-ChildItem -Path "README.md","skills" -Recurse -File |
+  ForEach-Object {
+    (Get-Content $_.FullName -Raw) -replace '<name>', $folder |
+      Set-Content $_.FullName -NoNewline
+  }
+```
+
+### macOS / Linux
+
+```bash
+FOLDER=codewire   # ← your choice, no leading dot
+grep -rl '<name>' README.md skills \
+  | xargs sed -i.bak "s/<name>/$FOLDER/g"
+find . -name "*.bak" -delete
+```
+
+After substitution, run `install.ps1` / `install.sh` so the patched skill lands in
+`~/.claude/skills/security-audit/`. The skill will then write its whitelist and audit
+reports under `~/.<your-folder>/security-audit/` and `~/.<your-folder>/security-audits/`.
+
 ## CLAUDE.md hookup
 
 Add this gate to your global `~/.claude/CLAUDE.md` so Claude knows when to invoke the skill:
