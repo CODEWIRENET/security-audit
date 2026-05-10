@@ -57,7 +57,7 @@ Claude/VS Code/JetBrains plugins, binaries (`.exe`/`.msi`/`.dmg`/`.AppImage`/
 `.deb`/Docker images/model weights) or third-party Claude skills — run the
 `security-audit` skill end-to-end per new direct artifact. Pre-approved:
 `@playwright/mcp@latest` plus entries in
-`~/.codewire/security-audit/whitelist.json`.
+`~/.<name>/security-audit/whitelist.json`.
 
 Verdict: `PASS` continue · `WARN` present concrete concerns and require
 explicit approval · `FAIL` stop and propose alternatives. Append
@@ -76,7 +76,7 @@ before installation.
   `VIRUSTOTAL_API_KEY` in your environment. Free tier gives 4 req/min, 500/day.
   Without a key, the skill falls back to GUI-link manual verification.
 - **Whitelist**: add already-vetted packages to
-  `~/.codewire/security-audit/whitelist.json`:
+  `~/.<name>/security-audit/whitelist.json`:
 
   ```json
   {
@@ -91,7 +91,7 @@ before installation.
 ## Verdict format
 
 The skill writes a structured JSON report to
-`~/.codewire/security-audits/<YYYY-MM-DD>/<artifact-slug>.json` and prints a
+`~/.<name>/security-audits/<YYYY-MM-DD>/<artifact-slug>.json` and prints a
 short summary in chat:
 
 ```text
