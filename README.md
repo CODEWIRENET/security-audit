@@ -20,17 +20,17 @@ No exceptions for "well-known" or "Microsoft-owned" packages — supply chain at
 ### Option A — Claude Code plugin
 
 ```text
-/plugin install security-audit@janusvittrup/security-audit
+/plugin install security-audit@CODEWIRENET/security-audit
 ```
 
-(or `claude plugin add janusvittrup/security-audit` from the CLI)
+(or `claude plugin add CODEWIRENET/security-audit` from the CLI)
 
 ### Option B — Standalone (no plugin system)
 
 Clone and run the install script:
 
 ```bash
-git clone https://github.com/janusvittrup/security-audit.git
+git clone https://github.com/CODEWIRENET/security-audit.git
 cd security-audit
 
 # Windows
