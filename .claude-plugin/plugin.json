@@ -1,0 +1,24 @@
+{
+  "name": "security-audit",
+  "version": "1.0.0",
+  "description": "Pre-install security gate for Claude Code: scans npm/NuGet/pub.dev/PyPI/cargo/go/Docker/MCP/plugins/binaries before they enter the workspace. Catches typosquats, fresh malware drops, maintainer takeovers, and unsigned binaries.",
+  "author": {
+    "name": "Janus Vittrup",
+    "email": "janusvittrup@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/janusvittrup/security-audit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janusvittrup/security-audit"
+  },
+  "keywords": [
+    "security",
+    "supply-chain",
+    "audit",
+    "npm",
+    "nuget",
+    "virustotal",
+    "claude-code"
+  ]
+}
