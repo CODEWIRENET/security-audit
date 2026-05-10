@@ -1,7 +1,7 @@
 {
   "name": "security-audit",
-  "version": "1.1.0",
-  "description": "Security suite for Claude Code: pre-install dependency audits (npm/NuGet/pub.dev/PyPI/cargo/go/Docker/MCP/plugins/binaries) plus secrets scanning (API keys, tokens, private keys, connection strings) and hook auditing (malicious .claude/settings.json patterns). Catches typosquats, fresh malware drops, maintainer takeovers, hardcoded credentials, and exfiltration hooks before they reach production.",
+  "version": "1.2.0",
+  "description": "Security suite for Claude Code (6 composable skills): pre-install dependency audits, secrets scanning, hook auditing, permissions auditing, egress gating, and periodic dependency rescans. Catches typosquats, fresh malware drops, maintainer takeovers, hardcoded credentials, exfiltration hooks, overly broad allow-rules, unauthorized outbound transmissions, and CVEs published after install. All skills share one architecture: PASS/WARN/FAIL verdicts, 0-100 risk scoring, structured JSON reports, manual whitelists, and append-only handoff logging.",
   "author": {
     "name": "Janus Vittrup",
     "email": "janusvittrup@gmail.com"
@@ -19,7 +19,11 @@
     "secrets",
     "secrets-detection",
     "hook-audit",
+    "permissions-audit",
+    "egress-audit",
+    "dependency-rescan",
     "exfiltration",
+    "cve",
     "npm",
     "nuget",
     "virustotal",
