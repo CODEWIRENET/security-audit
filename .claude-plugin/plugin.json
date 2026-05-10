@@ -1,7 +1,7 @@
 {
   "name": "security-audit",
-  "version": "1.0.0",
-  "description": "Pre-install security gate for Claude Code: scans npm/NuGet/pub.dev/PyPI/cargo/go/Docker/MCP/plugins/binaries before they enter the workspace. Catches typosquats, fresh malware drops, maintainer takeovers, and unsigned binaries.",
+  "version": "1.1.0",
+  "description": "Security suite for Claude Code: pre-install dependency audits (npm/NuGet/pub.dev/PyPI/cargo/go/Docker/MCP/plugins/binaries) plus secrets scanning (API keys, tokens, private keys, connection strings) and hook auditing (malicious .claude/settings.json patterns). Catches typosquats, fresh malware drops, maintainer takeovers, hardcoded credentials, and exfiltration hooks before they reach production.",
   "author": {
     "name": "Janus Vittrup",
     "email": "janusvittrup@gmail.com"
@@ -16,9 +16,14 @@
     "security",
     "supply-chain",
     "audit",
+    "secrets",
+    "secrets-detection",
+    "hook-audit",
+    "exfiltration",
     "npm",
     "nuget",
     "virustotal",
-    "claude-code"
+    "claude-code",
+    "claude-skill"
   ]
 }

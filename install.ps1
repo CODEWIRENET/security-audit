@@ -1,18 +1,33 @@
-# Standalone installer for the security-audit Claude skill (Windows / PowerShell).
+# Standalone installer for the CODEWIRE security suite Claude skills (Windows / PowerShell).
 # Use this if you don't run the Claude Code plugin system.
+#
+# Installs every folder under ./skills/ into ~/.claude/skills/, so the suite stays
+# in sync as new skills (security-audit, secrets-scanner, hook-audit, ...) are added.
 
 $ErrorActionPreference = "Stop"
 
-$dest = Join-Path $env:USERPROFILE ".claude\skills\security-audit"
-$src  = Join-Path $PSScriptRoot "skills\security-audit"
+$skillsRoot   = Join-Path $PSScriptRoot "skills"
+$installRoot  = Join-Path $env:USERPROFILE ".claude\skills"
 
-if (-not (Test-Path $src)) {
-    Write-Error "Source skill folder not found: $src"
+if (-not (Test-Path $skillsRoot)) {
+    Write-Error "Source skills folder not found: $skillsRoot"
     exit 1
 }
 
-New-Item -ItemType Directory -Path $dest -Force | Out-Null
-Copy-Item -Path (Join-Path $src "*") -Destination $dest -Recurse -Force
+$skills = Get-ChildItem -Path $skillsRoot -Directory
+if ($skills.Count -eq 0) {
+    Write-Error "No skill folders under $skillsRoot"
+    exit 1
+}
 
-Write-Host "Installed security-audit skill to $dest"
-Write-Host "Restart Claude Code for the skill to appear in the available-skills list."
+New-Item -ItemType Directory -Path $installRoot -Force | Out-Null
+
+foreach ($skill in $skills) {
+    $dest = Join-Path $installRoot $skill.Name
+    New-Item -ItemType Directory -Path $dest -Force | Out-Null
+    Copy-Item -Path (Join-Path $skill.FullName "*") -Destination $dest -Recurse -Force
+    Write-Host "Installed $($skill.Name) -> $dest"
+}
+
+Write-Host ""
+Write-Host "Done. Restart Claude Code for the skills to appear in the available-skills list."
